@@ -12,13 +12,13 @@ namespace Engle_Mortgage
 {
     public partial class frmMortgageCalculator : Form
     {
-        double Principle;
-        double NumPayments;
-        double InterestAnnual;
+        decimal Principle;
+        decimal NumPayments;
+        decimal InterestAnnual;
+        decimal InterestMonthly;
         bool ValidInterest;
         bool ValidPrincipal;
         bool ValidOther;
-        double InterestMonthly;
         string MonthlyPayment;
         //I added my own logo as the form icon even though it was not required
         public frmMortgageCalculator()
@@ -63,9 +63,9 @@ namespace Engle_Mortgage
         }
         private void btnCalculate_Click(object sender, EventArgs e)
         {
-            ValidPrincipal = double.TryParse(txtPrincipal.Text, out Principle);
-            ValidOther = double.TryParse(txtOther.Text, out NumPayments);
-            ValidInterest = double.TryParse(cboInterest.Text, out InterestAnnual);
+            ValidPrincipal = decimal.TryParse(txtPrincipal.Text, out Principle);
+            ValidOther = decimal.TryParse(txtOther.Text, out NumPayments);
+            ValidInterest = decimal.TryParse(cboInterest.Text, out InterestAnnual);
             //calculates the number of payments based off of the selected radio button
             if (rad15Year.Checked)
                 NumPayments = 15 * 12;
@@ -106,14 +106,15 @@ namespace Engle_Mortgage
             {
                 //convert annual to monthly by multiplying by 12 and divide by 100 to make it into a percent
                 InterestMonthly = (InterestAnnual / 12)/100;
-                MonthlyPayment = (Principle * (InterestMonthly * Math.Pow((1 + InterestMonthly), NumPayments) / (Math.Pow((1 + InterestMonthly), NumPayments) - 1))).ToString("C");
+                MonthlyPayment = (Principle * (InterestMonthly * (decimal)Math.Pow((1 + (double)InterestMonthly), (double)NumPayments) / ((decimal)Math.Pow((1 + (double)InterestMonthly), (double)NumPayments) - 1))).ToString("C");
                 lblOutput.Text = "Monthly payment is "+MonthlyPayment;
+                
             }
         }
         //validates that the interest amount entered is contained within the combobox collection
         private void cboInterest_Leave(object sender, EventArgs e)
         {
-            ValidInterest = double.TryParse(cboInterest.Text, out InterestAnnual);
+            ValidInterest = decimal.TryParse(cboInterest.Text, out InterestAnnual);
             if (cboInterest.Items.Contains(InterestAnnual.ToString("0.0")))
                 cboInterest.Text = InterestAnnual.ToString("0.0");
             else
