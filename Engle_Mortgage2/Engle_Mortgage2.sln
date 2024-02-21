@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.7.34031.279
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Engle_Mortgage", "Engle_Mortgage\Engle_Mortgage.csproj", "{DF3DD096-95A3-40D0-94B6-001E7ABEF4D5}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Engle_Mortgage2", "Engle_Mortgage2\Engle_Mortgage2.csproj", "{DF3DD096-95A3-40D0-94B6-001E7ABEF4D5}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
