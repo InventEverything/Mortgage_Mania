@@ -69,12 +69,10 @@
             // rad30Year
             // 
             this.rad30Year.AutoSize = true;
-            this.rad30Year.Checked = true;
             this.rad30Year.Location = new System.Drawing.Point(29, 123);
             this.rad30Year.Name = "rad30Year";
             this.rad30Year.Size = new System.Drawing.Size(106, 29);
             this.rad30Year.TabIndex = 2;
-            this.rad30Year.TabStop = true;
             this.rad30Year.Text = "30 Year";
             this.rad30Year.UseVisualStyleBackColor = true;
             this.rad30Year.CheckedChanged += new System.EventHandler(this.rad30Year_CheckedChanged);
@@ -115,7 +113,6 @@
             this.cboInterest.Size = new System.Drawing.Size(91, 33);
             this.cboInterest.TabIndex = 5;
             this.cboInterest.KeyDown += new System.Windows.Forms.KeyEventHandler(this.cboInterest_KeyDown);
-            this.cboInterest.Leave += new System.EventHandler(this.cboInterest_Leave);
             // 
             // btnCalculate
             // 
@@ -132,6 +129,7 @@
             // btnReset
             // 
             this.btnReset.BackColor = System.Drawing.SystemColors.Control;
+            this.btnReset.Enabled = false;
             this.btnReset.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnReset.Location = new System.Drawing.Point(29, 290);
             this.btnReset.Name = "btnReset";
@@ -203,9 +201,11 @@
             // 
             this.lblOutput.AutoSize = true;
             this.lblOutput.Location = new System.Drawing.Point(29, 342);
+            this.lblOutput.MaximumSize = new System.Drawing.Size(311, 0);
             this.lblOutput.Name = "lblOutput";
             this.lblOutput.Size = new System.Drawing.Size(0, 25);
             this.lblOutput.TabIndex = 13;
+            this.lblOutput.Resize += new System.EventHandler(this.lblOutput_Resize);
             // 
             // frmMortgageCalculator
             // 
