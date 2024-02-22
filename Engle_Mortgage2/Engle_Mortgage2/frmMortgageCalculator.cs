@@ -115,16 +115,17 @@ namespace Engle_Mortgage
             {
                 InvalidTerm = "Please select the appropriate term. \n";
             }
-            if (!ValidPrincipal)
+            if (!ValidPrincipal || txtPrincipal.Text.ToString().Contains("."))
             {
                 InvalidPrincipal = "Please enter a valid dollar amount as your principal. \n";
+                ValidPrincipal = false;
                 txtPrincipal.Focus();
             }
             //message containing all error messages associated with invalid input
             if (!ValidPrincipal || InvalidOther != string.Empty || InvalidInterest != string.Empty || !ValidTerm)
             {
                 lblOutput.Text = InvalidPrincipal + InvalidOther + InvalidTerm + InvalidInterest;
-                this.Height = lblOutput.Location.Y + lblOutput.Size.Height + 45;
+                lblOutput_Resize(sender, e);
             }
             //calculates as long as all required fields are correctly input
             if (ValidPrincipal && InvalidInterest == string.Empty && InvalidOther == string.Empty && ValidTerm && txtOther.Enabled || ValidPrincipal && InvalidInterest == string.Empty && ValidTerm && !txtOther.Enabled)
